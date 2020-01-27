@@ -15,7 +15,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class RabbitMQConfig {
- 
+
+	//******** sending *********
 	@Value("${queueName}")
 	String queue;
 	@Value("${exchangeName}")
@@ -49,4 +50,42 @@ public class RabbitMQConfig {
 		rabbitTemplate.setMessageConverter(jsonMessageConverter());
 		return rabbitTemplate;
 	}
+	
+	
+	//************ Receiving *************
+//	@Value("${queueNameBank}")
+//	String queue2;
+//	@Value("${exchangeNameBank}")
+//	String exchange2;
+//	@Value("${routingkeyBank}")
+//	private String routingkey2;
+//	
+//	@Bean
+//	Queue queue2() {
+//		return new Queue(queue2, false);
+//	}
+//	
+//	@Bean
+//	DirectExchange exchange2() {
+//		return new DirectExchange(exchange2);
+//	}
+//	
+//	@Bean
+//	Binding binding2(Queue queue2, DirectExchange exchange2) {
+//		return BindingBuilder.bind(queue2).to(exchange2).with(routingkey2);
+//	}
+//	
+//	@Bean
+//	public MessageConverter jsonMessageConverter2() {
+//		return new Jackson2JsonMessageConverter();
+//	}
+//	
+//	@Bean
+//	public AmqpTemplate rabbitTemplate2(ConnectionFactory connectionFactory) {
+//		final RabbitTemplate rabbitTemplate2 = new RabbitTemplate(connectionFactory);
+//		rabbitTemplate2.setMessageConverter(jsonMessageConverter2());
+//		return rabbitTemplate2;
+//	}
+	
+	
 }
