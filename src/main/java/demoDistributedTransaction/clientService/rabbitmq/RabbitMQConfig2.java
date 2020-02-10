@@ -11,32 +11,29 @@ import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
-public class RabbitMQConfig {
-
-	//******** sending *********
-	@Value("${queueName}")
-	String queue;
-	@Value("${exchangeName}")
-	String exchange;
-	@Value("${routingkey}")
-	private String routingkey;
+public class RabbitMQConfig2 {
+	//************ Receiving *************
+	@Value("${queueNameBank}")
+	String queue2;
+	@Value("${exchangeNameBank}")
+	String exchange2;
+	@Value("${routingkeyBank}")
+	private String routingkey2;
 	
 	@Bean
 	Queue queue() {
-		return new Queue(queue, false);
+		return new Queue(queue2, false);
 	}
 	
 	@Bean
 	DirectExchange exchange() {
-		return new DirectExchange(exchange);
+		return new DirectExchange(exchange2);
 	}
 	
 	@Bean
-	Binding binding(Queue queue, DirectExchange exchange) {
-		return BindingBuilder.bind(queue).to(exchange).with(routingkey);
+	Binding binding(Queue queue2, DirectExchange exchange2) {
+		return BindingBuilder.bind(queue2).to(exchange2).with(routingkey2);
 	}
 	
 	@Bean
@@ -50,8 +47,5 @@ public class RabbitMQConfig {
 		rabbitTemplate.setMessageConverter(jsonMessageConverter());
 		return rabbitTemplate;
 	}
-	
-	
-	
-	
+
 }

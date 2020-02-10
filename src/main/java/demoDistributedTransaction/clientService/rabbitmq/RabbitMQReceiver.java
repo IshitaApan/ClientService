@@ -3,7 +3,6 @@ package demoDistributedTransaction.clientService.rabbitmq;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Component;
 
-//******not used********
 @Component
 public class RabbitMQReceiver {
 	@RabbitListener(queues = "${queueNameBank}")
