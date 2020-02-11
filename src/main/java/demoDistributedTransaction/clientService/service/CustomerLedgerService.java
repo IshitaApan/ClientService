@@ -55,18 +55,18 @@ public class CustomerLedgerService {
 				System.out.println("Withdrawal not possible due to lack of balance");
 				return;
 			}
-			customerMaster.setBalance(customerMasterBalance-customerLedgerAmount);
+			//customerMaster.setBalance(customerMasterBalance-customerLedgerAmount);
 			
 		}
-		else if(transactionType.equals("Deposit")) {
-			customerMaster.setBalance(customerMasterBalance+customerLedgerAmount);
-		}
+//		else if(transactionType.equals("Deposit")) {
+//			customerMaster.setBalance(customerMasterBalance+customerLedgerAmount);
+//		}
 		
 		customerLedgerRepository.save(customerLedger);
 		
 		rabbitMQSender.send(customerLedger);
 		
-		customerMasterRepository.save(customerMaster);
+		//customerMasterRepository.save(customerMaster);
 		
 	}
 	
